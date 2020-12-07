@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <title>Login</title>
+</head>
+<body>
+<div class="d-flex align-items-center min-vh-100">
+    <div class="container w-25">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                <div class="alert alert-danger" role="alert" th:if="${param.error != null}">
+                    Username or password is invalid!
+                </div>
+                <form method="post" th:action="@{/validate-login}">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control" id="username" th:name="username" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" id="password" th:name="password" type="password">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Login</button>
+                    </div>
+                </form>
+            </article>
+        </div>
+    </div>
+</div>
+</body>
+</html>

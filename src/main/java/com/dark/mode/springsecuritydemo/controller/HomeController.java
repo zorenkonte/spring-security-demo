@@ -13,5 +13,4 @@ public class HomeController {
         m.addAttribute("user", a.getName());
         return "index";
     }
-
 }
