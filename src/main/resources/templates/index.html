@@ -2,9 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
     <title>Demo Spring Security</title>
 </head>
 <body>
 <h1 th:text="|Welcome ${user}|">Name</h1>
+<form method="post" th:action="@{/logout}">
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">Logout</button>
+    </div>
+</form>
 </body>
 </html>
