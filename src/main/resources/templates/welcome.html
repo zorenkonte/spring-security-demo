@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <title>Welcome Spring Security</title>
+</head>
+<body>
+<div class="d-flex align-items-center min-vh-100">
+    <div class="container w-25">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title mb-4 mt-1">Welcome Visitors</h4>
+                <p>Login your account to start connecting!</p>
+                    <div class="form-group">
+                        <a class="btn btn-primary btn-block" role="button" th:href="@{/login}">Get Started!</a>
+                    </div>
+            </article>
+        </div>
+    </div>
+</div>
+</body>
+</html>
