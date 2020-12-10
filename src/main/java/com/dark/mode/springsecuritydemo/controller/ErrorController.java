@@ -4,10 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AdminController {
+@RequestMapping("/error")
+public class ErrorController {
 
-    @RequestMapping("/admin")
-    public String admin() {
-        return "/roles/admin";
+    @RequestMapping("/403")
+    public String forbidden() {
+        return "/errors/403";
     }
 }
