@@ -15,6 +15,7 @@
                 <div sec:authorize="isAuthenticated()">
                     <p><span class="font-weight-bold">Logged user :</span> <span sec:authentication="name"></span></p>
                     <p><span class="font-weight-bold">Roles :</span> <span sec:authentication="authorities"></span></p>
+                    <p><span class="font-weight-bold">Menu :</span> <a th:href="@{/customer/list}">Customers</a></p>
                 </div>
                 <ul>
                     <li sec:authorize="hasRole('MANAGER')"><a th:href="@{/manager}">Manager Portal</a></li>
