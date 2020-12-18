@@ -1,2 +1,18 @@
+spring:
+  datasource:
+    username: ${username:darkroot}
+    password: ${password:@darKrOot3646}
+    url: jdbc:mysql://${host:localhost}:${port:3306}/${database:customer_db}
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        ddl-auto: none
 server:
   port: 8081
+  error:
+    include-stacktrace: never
