@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: ${username:darkroot}
-    password: ${password:@darKrOot3646}
-    url: jdbc:mysql://${host:localhost}:${port:3306}/${database:customer_db}
+    username: ${app_username:darkroot}
+    password: ${app_password:@darKrOot3646}
+    url: jdbc:mysql://${host:localhost}:${app_port:3306}/${app_database:customer_db}
   jpa:
     open-in-view: false
     show-sql: true
