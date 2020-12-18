@@ -3,15 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css} "/>
+    <link rel="stylesheet" th:href="@{/css/main.css} "/>
     <title>Customers Spring Security</title>
 </head>
 <body>
-<div class="d-flex align-items-center min-vh-100">
-    <div class="container w-25">
+<div class="d-flex align-items-center pt-lg-5 pt-5">
+    <div class="container w-75">
         <div class="card">
             <article class="card-body">
                 <h4 class="card-title mb-4 mt-1">Customers</h4>
                 <hr>
+                <table class="table table-sm table-hover table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="row-middle" th:each="customer : ${customers}">
+                        <th scope="row" th:text="${customer.getId()}">1</th>
+                        <td th:text="${customer.getFirstName()}">Dark</td>
+                        <td th:text="${customer.getLastName()}">Mode</td>
+                        <td th:text="${customer.getEmail()}">dark@mode.com</td>
+                        <td>
+                            <div aria-label="action buttons" class="btn-group btn-group-sm" role="group">
+                                <button class="btn btn-warning" type="button"><i class="fas fa-user-edit"></i></button>
+                                <button class="btn btn-danger" type="button"><i class="fas fa-user-times"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </article>
         </div>
     </div>
