@@ -1,15 +1,9 @@
 package com.dark.mode.springsecuritydemo.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Customer extends BaseEntity {
     private String firstName;
     private String lastName;
     private String email;
@@ -21,10 +15,6 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getFirstName() {

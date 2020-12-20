@@ -2,19 +2,14 @@ package com.dark.mode.springsecuritydemo.model;
 
 import com.dark.mode.springsecuritydemo.types.AuthorityType;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
-public class Authority {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Authority extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private AuthorityType name;
-
-    public Integer getId() {
-        return id;
-    }
 
     public AuthorityType getName() {
         return name;
