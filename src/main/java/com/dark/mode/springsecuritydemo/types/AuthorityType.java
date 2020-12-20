@@ -1,7 +1,7 @@
 package com.dark.mode.springsecuritydemo.types;
 
 public enum AuthorityType {
-    ADMIN,
-    MANAGER,
-    EMPLOYEE
+    ROLE_ADMIN,
+    ROLE_MANAGER,
+    ROLE_EMPLOYEE
 }
