@@ -16,12 +16,17 @@
                 <div sec:authorize="isAuthenticated()">
                     <p><span class="font-weight-bold">Logged user :</span> <span sec:authentication="name"></span></p>
                     <p><span class="font-weight-bold">Roles :</span> <span sec:authentication="authorities"></span></p>
-                    <p><span class="font-weight-bold">Menu :</span> <a th:href="@{/customer/list}">Customers</a></p>
+                    <p><span class="font-weight-bold">Menu :</span></p>
+                    <ul>
+                        <li><a th:href="@{/customer/list}">Customers</a></li>
+                    </ul>
+                    <p sec:authorize="hasAnyRole('MANAGER', 'ADMIN')"><span class="font-weight-bold">Portals :</span>
+                    </p>
+                    <ul>
+                        <li sec:authorize="hasRole('MANAGER')"><a th:href="@{/manager}">Manager Portal</a></li>
+                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}">Admin Portal</a></li>
+                    </ul>
                 </div>
-                <ul>
-                    <li sec:authorize="hasRole('MANAGER')"><a th:href="@{/manager}">Manager Portal</a></li>
-                    <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/admin}">Admin Portal</a></li>
-                </ul>
                 <form method="post" th:action="@{/logout}">
                     <div class="form-group">
                         <button class="btn btn-danger btn-block" type="submit">Logout</button>
