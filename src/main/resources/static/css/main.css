@@ -12,6 +12,10 @@ a:link {
     text-decoration: none;
 }
 
+li.page-item.active {
+    pointer-events: none;
+}
+
 h1, h2, h3, h4, h5, h6, a.page-link {
     font-family: Quicksand-Bold, serif;
 }
