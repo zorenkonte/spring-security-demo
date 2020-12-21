@@ -40,7 +40,41 @@
                     </tbody>
                 </table>
                 <hr>
-                <a th:href="@{/home}">Back To Home</a>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a th:href="@{/home}">Back To Home</a>
+                    <nav aria-label="pagination" th:if="${customers.totalPages gt 0}">
+                        <ul class="pagination justify-content-end pagination-sm mb-0">
+                            <li class="page-item"
+                                th:classappend="${customers.number eq 0} ? 'disabled'">
+                                <a aria-label="Previous"
+                                   class="page-link svg-icon"
+                                   rel="tooltip"
+                                   th:href="@{/customer/list(page=${customers.number})}"
+                                   title="Previous Page">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item" th:classappend="${i eq customers.number + 1} ? 'active'"
+                                th:each="i : ${#numbers.sequence(1, customers.totalPages)}">
+                                <a class="page-link" rel="tooltip"
+                                   th:href="@{/customer/list(page=${i})}"
+                                   th:text="${i}"
+                                   th:title="${'Page '+ i}">
+                                    link
+                                </a>
+                            </li>
+                            <li class="page-item"
+                                th:classappend="${customers.number + 1 eq customers.totalPages} ? 'disabled'">
+                                <a aria-label="Next"
+                                   class="page-link svg-icon"
+                                   rel="tooltip"
+                                   th:href="@{/customer/list(page=${customers.number + 2})}" title="Next Page">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </article>
         </div>
     </div>
