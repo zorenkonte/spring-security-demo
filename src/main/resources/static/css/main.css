@@ -1,7 +1,17 @@
+@import url("fonts.css");
+
+body {
+    font-family: Quicksand-Regular, serif;
+}
+
 .row-middle > td, th {
     vertical-align: middle !important;
 }
 
 a:link {
     text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Quicksand-Bold, serif;
 }
