@@ -1,8 +1,11 @@
 package com.dark.mode.springsecuritydemo.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.Entity;
 
 @Entity
+@Component
 public class Customer extends BaseEntity {
     private String firstName;
     private String lastName;

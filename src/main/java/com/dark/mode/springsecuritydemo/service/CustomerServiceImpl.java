@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerDAO customerDAO;
@@ -19,6 +21,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Iterable<Customer> customers() {
         return customerDAO.findAll();
+    }
+
+    @Override
+    public Optional<Customer> customer(Integer id) {
+        return customerDAO.findById(id);
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        return customerDAO.save(customer);
     }
 
     @Override

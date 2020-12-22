@@ -19,3 +19,38 @@ li.page-item.active {
 h1, h2, h3, h4, h5, h6, a.page-link {
     font-family: Quicksand-Bold, serif;
 }
+
+form .col-form-label {
+    font-family: Quicksand-Medium, serif;
+}
+
+.alert-dismiss {
+    -webkit-animation: dismiss-animation 15s forwards;
+    animation: dismiss-animation 15s forwards;
+}
+
+@keyframes dismiss-animation {
+    0%, 20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        position: absolute;
+    }
+}
+
+@-webkit-keyframes dismiss-animation {
+    0%, 20% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        position: absolute;
+    }
+}

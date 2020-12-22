@@ -13,13 +13,17 @@
         <div class="card">
             <article class="card-body">
                 <h4 class="card-title mb-4 mt-1">Customers</h4>
+                <div class="alert alert-success alert-dismissible fade alert-dismiss" role="alert"
+                     th:if="${updateSuccess}">
+                    Customer <strong>#<span th:text="${id}">999</span></strong> updated successfully!
+                </div>
                 <hr>
                 <table class="table table-sm table-hover table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -32,8 +36,16 @@
                         <td th:text="${customer.getEmail()}">dark@mode.com</td>
                         <td>
                             <div aria-label="action buttons" class="btn-group btn-group-sm" role="group">
-                                <button class="btn btn-warning" type="button"><i class="fas fa-user-edit"></i></button>
-                                <button class="btn btn-danger" type="button"><i class="fas fa-user-times"></i></button>
+                                <button class="btn btn-warning btn-customer-update"
+                                        th:data-id="${customer.getId()}"
+                                        type="button">
+                                    <i class="fas fa-user-edit"></i>
+                                </button>
+                                <button class="btn btn-danger btn-customer-delete"
+                                        th:data-id="${customer.getId()}"
+                                        type="button">
+                                    <i class="fas fa-user-times"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -79,5 +91,33 @@
         </div>
     </div>
 </div>
+<div aria-hidden="true" aria-labelledby="addUpdateModalLabel" class="modal fade"
+     id="add-update-modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addUpdateModalLabel">New message</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script>
+    $(() => {
+        $(document).on('click', '.btn-customer-update', (e) => {
+            const id = $(e.currentTarget).data('id')
+            $('#addUpdateModalLabel').text('Update Customer')
+            $.ajax(`/customer/update/${id}`)
+                .then((res) => $('#modal-body').html(res))
+                .catch((err) => console.error(err))
+                .then($('#add-update-modal').modal('show'))
+        })
+    })
+</script>
 </body>
 </html>
