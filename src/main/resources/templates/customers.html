@@ -12,7 +12,16 @@
     <div class="container w-75">
         <div class="card">
             <article class="card-body">
-                <h4 class="card-title mb-4 mt-1">Customers</h4>
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title mb-0 mt-1">Customers</h4>
+                    <button class="btn btn-primary btn-sm"
+                            data-placement="left"
+                            data-toggle="tooltip"
+                            title="New Customer"
+                            type="button">
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                </div>
                 <div class="alert alert-success alert-dismissible fade alert-dismiss" role="alert"
                      th:if="${updateSuccess}">
                     Customer <strong>#<span th:text="${id}">999</span></strong> updated successfully!
@@ -106,6 +115,7 @@
     </div>
 </div>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <script>
     $(() => {
@@ -117,6 +127,8 @@
                 .catch((err) => console.error(err))
                 .then($('#add-update-modal').modal('show'))
         })
+
+        $('[data-toggle="tooltip"]').tooltip()
     })
 </script>
 </body>
