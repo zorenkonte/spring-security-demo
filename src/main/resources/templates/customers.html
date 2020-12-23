@@ -22,7 +22,7 @@
                         <i class="fas fa-user-plus"></i>
                     </button>
                 </div>
-                <div class="alert alert-success alert-dismissible fade alert-dismiss" role="alert"
+                <div class="alert mt-3 alert-success alert-dismissible fade alert-dismiss" role="alert"
                      th:if="${updateSuccess}">
                     Customer <strong>#<span th:text="${id}">999</span></strong> saved successfully!
                 </div>
@@ -168,7 +168,7 @@
                 .then($('#update-modal').modal('show'))
         })
 
-        $(document).on('click', '.btn-customer-add', (e) => {
+        $(document).on('click', '.btn-customer-add', () => {
             $('#add-modal').modal('show')
         })
 
