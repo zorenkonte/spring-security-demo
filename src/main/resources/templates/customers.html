@@ -46,12 +46,18 @@
                         <td>
                             <div aria-label="action buttons" class="btn-group btn-group-sm" role="group">
                                 <button class="btn btn-warning btn-customer-update"
+                                        data-placement="left"
+                                        data-toggle="tooltip"
                                         th:data-id="${customer.getId()}"
+                                        title="Update Customer"
                                         type="button">
                                     <i class="fas fa-user-edit"></i>
                                 </button>
                                 <button class="btn btn-danger btn-customer-delete"
+                                        data-placement="left"
+                                        data-toggle="tooltip"
                                         th:data-id="${customer.getId()}"
+                                        title="Delete Customer"
                                         type="button">
                                     <i class="fas fa-user-times"></i>
                                 </button>
