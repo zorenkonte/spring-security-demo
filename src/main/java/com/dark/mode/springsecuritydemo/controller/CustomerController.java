@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomerController {
     private final CustomerService customerService;
     private Customer customer;
-    private boolean updateSuccess;
+    private boolean saveSuccess;
 
     @Autowired
     public CustomerController(CustomerService customerService, Customer customer) {
@@ -39,9 +39,10 @@ public class CustomerController {
         }
 
         model.addAttribute("customers", customerService.paginateCustomers(PageRequest.of(pageTemp, sizeTemp)));
-        model.addAttribute("updateSuccess", updateSuccess);
+        model.addAttribute("updateSuccess", saveSuccess);
         model.addAttribute("id", customer.getId());
-        updateSuccess = false;
+        model.addAttribute("customer", new Customer());
+        saveSuccess = false;
         return "customers";
     }
 
@@ -57,7 +58,14 @@ public class CustomerController {
     public String update(@ModelAttribute Customer c, HttpServletRequest request) {
         fillCustomer(c);
         customerService.save(customer);
-        updateSuccess = true;
+        saveSuccess = true;
+        return String.format("redirect:%s", request.getHeader("referer"));
+    }
+
+    @PostMapping("/save")
+    public String save(@ModelAttribute Customer c, HttpServletRequest request) {
+        customer = customerService.save(c);
+        saveSuccess = true;
         return String.format("redirect:%s", request.getHeader("referer"));
     }
 

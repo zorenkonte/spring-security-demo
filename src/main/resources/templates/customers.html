@@ -14,7 +14,7 @@
             <article class="card-body">
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title mb-0 mt-1">Customers</h4>
-                    <button class="btn btn-primary btn-sm"
+                    <button class="btn btn-primary btn-sm btn-customer-add"
                             data-placement="left"
                             data-toggle="tooltip"
                             title="New Customer"
@@ -24,7 +24,7 @@
                 </div>
                 <div class="alert alert-success alert-dismissible fade alert-dismiss" role="alert"
                      th:if="${updateSuccess}">
-                    Customer <strong>#<span th:text="${id}">999</span></strong> updated successfully!
+                    Customer <strong>#<span th:text="${id}">999</span></strong> saved successfully!
                 </div>
                 <hr>
                 <table class="table table-sm table-hover table-striped">
@@ -106,17 +106,52 @@
         </div>
     </div>
 </div>
-<div aria-hidden="true" aria-labelledby="addUpdateModalLabel" class="modal fade"
-     id="add-update-modal" role="dialog" tabindex="-1">
+<!--update customer modal-->
+<div aria-hidden="true" aria-labelledby="updateModalLabel" class="modal fade"
+     id="update-modal" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addUpdateModalLabel">New message</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Customer</h5>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="modal-body"></div>
+            <div id="modal-update-body"></div>
+        </div>
+    </div>
+</div>
+<!--new customer modal-->
+<div aria-hidden="true" aria-labelledby="addModalLabel" class="modal fade"
+     id="add-modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">New Customer</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/customer/save}" th:method="POST" th:object="${customer}">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label" for="first-name">First name</label>
+                        <input class="form-control" id="first-name" required th:field="*{firstName}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="last-name">Last name</label>
+                        <input class="form-control" id="last-name" required th:field="*{lastName}" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="email">Email</label>
+                        <input class="form-control" id="email" required th:field="*{email}" type="email">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
+                    <button class="btn btn-success" type="submit">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -127,11 +162,14 @@
     $(() => {
         $(document).on('click', '.btn-customer-update', (e) => {
             const id = $(e.currentTarget).data('id')
-            $('#addUpdateModalLabel').text('Update Customer')
             $.ajax(`/customer/update/${id}`)
-                .then((res) => $('#modal-body').html(res))
+                .then((res) => $('#modal-update-body').html(res))
                 .catch((err) => console.error(err))
-                .then($('#add-update-modal').modal('show'))
+                .then($('#update-modal').modal('show'))
+        })
+
+        $(document).on('click', '.btn-customer-add', (e) => {
+            $('#add-modal').modal('show')
         })
 
         $('[data-toggle="tooltip"]').tooltip()
