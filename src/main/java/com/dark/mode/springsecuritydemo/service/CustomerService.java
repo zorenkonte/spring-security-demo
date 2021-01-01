@@ -13,5 +13,7 @@ public interface CustomerService {
 
     Customer save(Customer customer);
 
+    void deleteById(Integer id);
+
     Page<Customer> paginateCustomers(Pageable pageable);
 }

@@ -67,6 +67,11 @@
 			<version>5.15.1</version>
 		</dependency>
 		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>sweetalert2</artifactId>
+			<version>10.12.5</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>

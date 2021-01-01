@@ -34,6 +34,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void deleteById(Integer id) {
+        customerDAO.deleteById(id);
+    }
+
+    @Override
     public Page<Customer> paginateCustomers(Pageable pageable) {
         return customerDAO.findAll(pageable);
     }

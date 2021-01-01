@@ -4,6 +4,8 @@ import com.dark.mode.springsecuritydemo.model.Customer;
 import com.dark.mode.springsecuritydemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -67,6 +69,13 @@ public class CustomerController {
         customer = customerService.save(c);
         saveSuccess = true;
         return String.format("redirect:%s", request.getHeader("referer"));
+    }
+
+    @ResponseBody
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        customerService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     private void fillCustomer(Customer c) {
